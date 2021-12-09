@@ -108,7 +108,7 @@ export default {
 </script>
 
 <template>
-  <section class="todoapp">
+  <article class="todoapp">
     <header class="header">
       <h1>todos</h1>
       <input
@@ -120,7 +120,7 @@ export default {
         @keyup.enter="addTodo"
       />
     </header>
-    <section class="main" v-show="todos.length">
+    <main class="main" v-show="todos.length">
       <input
         id="toggle-all"
         class="toggle-all"
@@ -155,7 +155,7 @@ export default {
           />
         </li>
       </ul>
-    </section>
+    </main>
     <footer class="footer" v-show="todos.length">
       <span class="todo-count">
         <strong v-text="remaining"></strong>
@@ -198,7 +198,7 @@ export default {
         Clear completed
       </button>
     </footer>
-  </section>
+  </article>
   <AppFooter />
 </template>
 

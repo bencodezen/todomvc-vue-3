@@ -1,11 +1,16 @@
 <script>
+import NewTodo from './NewTodo.vue'
+
 export default {
   name: 'TodoApp',
+
+  components: {
+    NewTodo
+  },
 
   // App's initial data state
   data: () => ({
     todos: [],
-    newTodo: '',
     editedTodo: null,
     visibility: 'all'
   }),
@@ -45,19 +50,17 @@ export default {
       return word + (count === 1 ? '' : 's')
     },
 
-    addTodo() {
-      const value = this.newTodo && this.newTodo.trim()
+    addTodo(newTodo) {
       const todoItem = {
         id: this.todos.length + 1,
-        title: value,
+        title: newTodo,
         completed: false
       }
 
-      if (!value) {
+      if (!newTodo) {
         return
       }
       this.todos.push(todoItem)
-      this.newTodo = ''
     },
 
     updateTodo(todo) {
@@ -101,16 +104,7 @@ export default {
   <article class="todoapp">
     <header class="header">
       <h1>todos</h1>
-      <label for="new-todo" class="sr-only">What needs to be done?</label>
-      <input
-        id="new-todo"
-        class="new-todo"
-        autofocus
-        autocomplete="off"
-        placeholder="What needs to be done?"
-        v-model="newTodo"
-        @keyup.enter="addTodo"
-      />
+      <NewTodo label="What needs to be done?" @add-todo="addTodo" />
     </header>
     <main class="main" v-show="todos.length">
       <input

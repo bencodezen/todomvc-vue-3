@@ -1,4 +1,6 @@
 <script>
+import { computed, reactive } from 'vue'
+
 export default {
   props: {
     label: {
@@ -6,21 +8,25 @@ export default {
       required: true
     }
   },
-  data: () => ({
-    newTodo: ''
-  }),
-  computed: {
-    finalNewTodo() {
-      return this.newTodo.trim()
-    }
-  },
   emits: {
     'add-todo': todo => todo.length > 0
   },
-  methods: {
-    addTodo() {
-      this.$emit('add-todo', this.finalNewTodo)
-      this.newTodo = ''
+  setup(props, { emit }) {
+    const todoState = reactive({
+      newTodo: '',
+      finalNewTodo: computed(() => {
+        return todoState.newTodo.trim()
+      })
+    })
+
+    const addTodo = () => {
+      emit('add-todo', todoState.finalNewTodo)
+      todoState.newTodo = ''
+    }
+
+    return {
+      addTodo,
+      todoState
     }
   }
 }
@@ -30,7 +36,7 @@ export default {
   <label for="new-todo-input" class="sr-only">{{ label }}</label>
   <input
     v-bind="$attrs"
-    v-model="newTodo"
+    v-model="todoState.newTodo"
     :placeholder="label"
     @keyup.enter="addTodo"
     id="new-todo-input"

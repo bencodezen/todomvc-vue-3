@@ -1,6 +1,14 @@
 <script>
+import AppFooter from './components/AppFooter.vue'
+
 export default {
   name: 'App',
+
+  // Define components that will be used in the template
+  components: {
+    AppFooter
+  },
+
   // app initial state
   data: () => ({
     todos: [],
@@ -188,13 +196,7 @@ export default {
       </button>
     </footer>
   </section>
-  <footer class="info">
-    <p>Double-click to edit a todo</p>
-    <p>
-      An iteration on
-      <a href="https://todomvc.com/examples/vue/">TodoMVC - Vue</a>
-    </p>
-  </footer>
+  <AppFooter />
 </template>
 
 <style>

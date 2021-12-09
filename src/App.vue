@@ -100,6 +100,9 @@ export default {
     removeCompleted() {
       this.todos = this.todos.filter(item => !item.completed)
     }
+  },
+  created() {
+    window.document.title = 'TodoMVC (Vue 3) by @bencodezen'
   }
 }
 </script>

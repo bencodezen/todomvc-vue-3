@@ -42,8 +42,8 @@
 
 .info a {
   color: inherit;
-  text-decoration: none;
-  font-weight: 400;
+  text-decoration: underline;
+  font-weight: 600;
 }
 
 .info a:hover {

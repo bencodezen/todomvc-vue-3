@@ -31,8 +31,8 @@ export default {
         return this.remaining === 0
       },
       set() {
-        this.todos.forEach(async todo => {
-          await this.updateTodo(todo)
+        this.todos.forEach(todo => {
+          this.updateTodo(todo)
         })
       }
     }

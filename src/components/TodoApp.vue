@@ -101,7 +101,9 @@ export default {
   <article class="todoapp">
     <header class="header">
       <h1>todos</h1>
+      <label for="new-todo" class="sr-only">What needs to be done?</label>
       <input
+        id="new-todo"
         class="new-todo"
         autofocus
         autocomplete="off"
